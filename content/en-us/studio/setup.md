@@ -1,4 +1,23 @@
----
+local Lighting = game:GetService("Lighting")
+
+Lighting.GlobalShadows = false
+Lighting.FogEnd = 100000
+Lighting.Brightness = 1
+
+-- Remove effects
+for _, v in pairs(Lighting:GetChildren()) do
+    if v:IsA("PostEffect") or v:IsA("Atmosphere") then
+        v:Destroy()
+    end
+end
+
+-- Lower part quality
+for _, obj in pairs(workspace:GetDescendants()) do
+    if obj:IsA("BasePart") then
+        obj.Material = Enum.Material.Plastic
+        obj.Reflectance = 0
+    end
+end---
 title: Roblox Studio setup
 description: Explains how to install Roblox Studio on your system.
 ---
